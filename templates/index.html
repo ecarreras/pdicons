@@ -1,0 +1,10 @@
+<!doctype html>
+<form submit="/">
+    <input type="text" name="term"/>
+    <input type="submit"/>
+</form>
+{% for icon in icons %}
+    <a href="https://thenounproject.com/{{icon.permalink}}">
+        <img src="{{icon.preview_url}}">
+    </a><br>
+{% endfor %}
