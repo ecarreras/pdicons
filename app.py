@@ -8,7 +8,7 @@ app.config.from_pyfile('app.config')
 
 @app.route('/')
 def index():
-    term = request.args.get('term')
+    term = request.args.get('q')
     icons = []
     if term:
         auth = OAuth1(
