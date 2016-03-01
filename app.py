@@ -19,7 +19,9 @@ def index():
         response = requests.get(url, auth=auth)
         if response.ok:
             icons = response.json().get('icons', [])
-    return render_template('index.html', icons=icons)
+    else:
+        term=''
+    return render_template('index.html', icons=icons, query=term)
 
 
 if __name__ == '__main__':
