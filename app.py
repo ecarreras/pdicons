@@ -1,9 +1,16 @@
+from os import environ
+
 from flask import Flask, render_template, request
 import requests
 from requests_oauthlib import OAuth1
 
 app = Flask(__name__)
-app.config.from_pyfile('app.config')
+app.config.setdefault('OAUTH_KEY', environ.get('TNP_OAUTH_KEY'))
+app.config.setdefault('OAUTH_SECRET', environ.get('TNP_OAUTH_SECRET'))
+try:
+    app.config.from_pyfile('app.config')
+except IOError:
+    app.logger.warning('Config file not found.')
 
 
 @app.route('/')
