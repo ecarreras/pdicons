@@ -1,0 +1,6 @@
+{
+  "name": "Public Domain Icons",
+  "description": "Simple web to get all public domain icons from the noun project",
+  "repository": "https://github.com/ecarreas/pdicons",
+  "keywords": ["python", "icons", "web"]
+}
