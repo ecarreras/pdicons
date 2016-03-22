@@ -4,7 +4,7 @@ command_exists() { command -v "$1" > /dev/null 2>&1; }
 log() { printf "%b\n" "$*"; }
 fail() { log "\nERROR: $*\n" ; exit 1 ; }
 
-# Install dependencies
+# Prepare dependencies
 log 'Preparing dependencies...'
 
 if ! command_exists 'pip' && command_exists 'brew'; then
@@ -12,7 +12,6 @@ if ! command_exists 'pip' && command_exists 'brew'; then
 fi
 
 command_exists 'pip' || fail 'Pip not available, cannot install dependencies'
-pip -q install -r requirements.txt || fail 'Failed to install dependencies'
 
 # Download the application
 log 'Downloading application...'
@@ -20,6 +19,10 @@ curl -L -sS -O 'https://github.com/ecarreras/pdicons/archive/master.zip' || fail
 unzip -q master.zip || fail 'Failed to unzip application'
 rm -rf master.zip
 cd pdicons-master
+
+# Install dependencies
+log 'Installing dependencies...'
+pip -q install -r requirements.txt || fail 'Failed to install dependencies'
 
 # Configure API credentials
 log '\nEnter Noun Project API details (https://thenounproject.com/developers/apps/)'
