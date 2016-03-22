@@ -2,5 +2,15 @@
   "name": "Public Domain Icons",
   "description": "Simple web to get all public domain icons from the noun project",
   "repository": "https://github.com/ecarreas/pdicons",
-  "keywords": ["python", "icons", "web"]
+  "keywords": ["python", "icons", "web"],
+  "env": {
+      "TNP_OAUTH_KEY": {
+          "description": "Noun project OAuth key",
+          "required": true
+      },
+      "TNP_OAUTH_SECRET": {
+          "description": "Noun project OAuth secret",
+          "required": true
+      }
+    }
 }
