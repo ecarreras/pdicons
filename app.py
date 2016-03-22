@@ -1,10 +1,11 @@
-from os import environ
-
 from flask import Flask, render_template, request
 import requests
 from requests_oauthlib import OAuth1
 
 app = Flask(__name__)
+app.jinja_env.trim_blocks = True
+app.jinja_env.lstrip_blocks = True
+
 app.config.setdefault('OAUTH_KEY', environ.get('TNP_OAUTH_KEY'))
 app.config.setdefault('OAUTH_SECRET', environ.get('TNP_OAUTH_SECRET'))
 try:

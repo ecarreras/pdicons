@@ -1,159 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Noun Project Public Domain Search</title>
+    <meta charset="utf-8" />
+    <title>Noun Project Public Domain Search</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-	<style>
-	html,
-	body {
-		margin:			0;
-		background:		#f2f2f2;
-		font-family:	sans-serif;
-	}
-	
-	.search-form,
-	main {
-		max-width:	940px;
-		margin:		0 auto;
-	}
-	
-	header {
-		background:	#333;
-	}
-	
-		.search-form {
-			position:	relative;
-		}
-		
-			.search-form label {
-				display:	block;
-				position:	absolute;
-				top:		50%;
-				left:		0.3em;
-				width:		24px;
-				height:		24px;
-				margin-top:	-12px;
-				overflow:	hidden;
-				text-indent:		105%;
-				white-space:		nowrap;
-				background:			transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzZENkQ2RCIgZD0iTTIxIDIzLjhsLTUuNy01LjdjLTEuNSAxLTMuNCAxLjYtNS40IDEuNi01LjUgMC05LjktNC40LTkuOS05LjlDMCA0LjQgNC40IDAgOS44IDBzOS44IDQuNCA5LjggOS44YzAgMS45LS41IDMuNy0xLjUgNS4ybDUuOCA1LjgtMi45IDN6bS00LjYtMTRjMC0zLjYtMi45LTYuNi02LjYtNi42LTMuNiAwLTYuNiAyLjktNi42IDYuNnMyLjkgNi42IDYuNiA2LjZjMy43IDAgNi42LTIuOSA2LjYtNi42eiIvPjwvc3ZnPg==') no-repeat 50% 50%;
-				background-size:	100% 100%;
-			}
-			
-			.search-form input {
-				display:	block;
-				width:		100%;
-				margin:		0;
-				padding:	0.6em 0.4em 0.6em 2.2em;
-				border:		none;
-				box-sizing:	border-box;
-				font-size:			1.2em;
-				color:				#bababa;
-				background:			#333;
-				border-radius:		0;
-				border-top:			solid 3px transparent;
-				border-bottom:		solid 3px transparent;
-				-webkit-appearance:	none;
-			}
-				.search-form input:focus {
-					outline:	none;
-					border-bottom-color:	#6d6d6d;
-				}
-				
-				.search-form input::-webkit-search-decoration,
-				.search-form input::-webkit-search-cancel-button,
-				.search-form input::-webkit-search-results-button,
-				.search-form input::-webkit-search-results-decoration {
-					display:	none;
-				}
-			
-			.search-form button {
-				display:	none;
-			}
-	
-	main {
-		padding:	0.6em;
-	}
-			
-	.icons {
-		margin:		0;
-		padding:	0;
-		list-style:	none;
-	}
-	
-		.icon {
-			display:	inline-block;
-			padding:	1.2em;
-		}
-		
-			.icon__link {
-				display:	block;
-				position:	relative;
-				padding:	0.3em;
-				width:		5em;
-				height:		5em;
-			}	
-				.icon__link:after {
-					content:	"";
-					display:	block;
-					position:	absolute;
-					top:		0.3em;
-					left:		0.3em;
-					bottom:		0.3em;
-					right:		0.3em;
-					background:	#e0e0e0;
-					border-radius:	50%;
-					z-index:		1;
-					transition:		opacity 0.2s;
-				}
-					.icon.__loaded .icon__link:after {
-						opacity:	0;
-					}
-			
-				.icon__preview {
-					display:	block;
-					position:	relative;
-					width:		100%;
-					height:		100%;
-					margin:		0 auto;
-					opacity:	0;
-					transition:	opacity 0.2s;
-					z-index:	2;
-				}
-					.icon.__loaded .icon__preview {
-						opacity:	1;
-					}
-					
-	.no-results {
-		text-align:	center;
-		color:		#999;
-	}
-	</style>
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheet.css') }}" />
 </head>
 <body>
-	<header>
-		<form class="search-form">
-			<label for="input-search">Keywords</label>
-			<input type="search" name="q" id="input-search" value="{{ query }}" />
-			
-			<button type="submit">Search</button>
-		</form>		
-	</header>
-	<main>
-		{% if icons %}
-			<ul class="icons">
-			{% for icon in icons %}
-				<li class="icon">
-					<a class="icon__link" href="https://thenounproject.com/{{ icon.permalink }}" target="_blank">
-						<img class="icon__preview" src="{{ icon.preview_url }}" onload="this.parentElement.parentElement.className+=' __loaded'" />
-					</a>
-				</li>
-			{% endfor %}
-			</ul>
-		{% elif query != "" %}
-			<p class="no-results">No icons found for "{{ query }}"</p>
-		{% endif %}
-	</main>
+    <header>
+        <form class="search-form">
+            <label for="input-search">Keywords</label>
+            <input type="search" name="q" id="input-search" value="{{ query }}" placeholder="Search for anything" />
+
+            <button type="submit">Search</button>
+        </form>
+    </header>
+    <main>
+    {% if icons %}
+        <ul class="icons">
+        {% for icon in icons %}
+            <li class="icon">
+                <a class="icon__link" href="https://thenounproject.com/{{ icon.permalink }}" target="_blank"  title="{{ icon.term }}">
+                    <img class="icon__preview" src="{{ icon.preview_url }}" alt="{{ icon.term }}" />
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% elif query != "" %}
+        <p class="no-results">No icons found for "{{ query }}"</p>
+    {% endif %}
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
