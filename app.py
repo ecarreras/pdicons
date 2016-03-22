@@ -5,7 +5,13 @@ from requests_oauthlib import OAuth1
 app = Flask(__name__)
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
-app.config.from_pyfile('app.config')
+
+app.config.setdefault('OAUTH_KEY', environ.get('TNP_OAUTH_KEY'))
+app.config.setdefault('OAUTH_SECRET', environ.get('TNP_OAUTH_SECRET'))
+try:
+    app.config.from_pyfile('app.config')
+except IOError:
+    app.logger.warning('Config file not found.')
 
 
 @app.route('/')
@@ -27,4 +33,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(environ.get('PORT', 5000)), debug=True)
