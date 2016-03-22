@@ -11,6 +11,8 @@ Quick Setup
 
 Either [Homebrew](http://brew.sh) or [Pip](https://en.wikipedia.org/wiki/Pip_(package_manager)) must be installed.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ecarreras/pdicons)
+
 
 Setup
 -----
