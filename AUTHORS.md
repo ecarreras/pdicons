@@ -1,4 +1,4 @@
-## Author
+## Authors
 * Eduard Carreras - [@ecarreras](https://github.com/ecarreras)
  
 ## Contributions
