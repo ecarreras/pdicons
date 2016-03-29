@@ -7,7 +7,9 @@ Search for public domain licensed icons on [The Noun Project](https://thenounpro
 Quick Setup
 -----------
 
-`bash <(curl -s "https://raw.githubusercontent.com/ecarreras/pdicons/master/bin/setup.sh")`
+```bash
+bash <(curl -s "https://cdn.rawgit.com/ecarreras/pdicons/master/bin/setup.sh")
+```
 
 Either [Homebrew](http://brew.sh) or [Pip](https://en.wikipedia.org/wiki/Pip_(package_manager)) must be installed.
 
