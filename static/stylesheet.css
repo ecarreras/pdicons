@@ -44,6 +44,7 @@ header {
 
 .search-form input {
     appearance: none;
+    -webkit-appearance: none;
     background: #333;
     border: 0;
     border-bottom: solid 3px transparent;
