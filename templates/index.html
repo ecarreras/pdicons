@@ -20,7 +20,7 @@
         <ul class="icons">
         {% for icon in icons %}
             <li class="icon">
-                <a class="icon__link" href="https://thenounproject.com/{{ icon.permalink }}" target="_blank"  title="{{ icon.term }}">
+                <a class="icon__link" href="https://thenounproject.com{{ icon.permalink }}" target="_blank"  title="{{ icon.term }}">
                     <img class="icon__preview" src="{{ icon.preview_url }}" alt="{{ icon.term }}" />
                 </a>
             </li>
