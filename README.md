@@ -8,7 +8,7 @@ Quick Setup
 -----------
 
 ```bash
-bash <(curl -s "https://cdn.rawgit.com/ecarreras/pdicons/master/bin/setup.sh")
+bash <(curl -s "https://cdn.combinatronics.com/ecarreras/pdicons/master/bin/setup.sh")
 ```
 
 Either [Homebrew](http://brew.sh) or [Pip](https://en.wikipedia.org/wiki/Pip_(package_manager)) must be installed.
